@@ -10,17 +10,32 @@
     window.onload = function() {
       window.scrollTo(0, 0);
     };
+
+    // Smooth oldalváltás slide-out effekttel
+    document.querySelectorAll("button, a").forEach(element => {
+      element.addEventListener("click", function (event) {
+        const href = this.getAttribute("href"); // Csak a href attribútumot használjuk
+        if (href) {
+          event.preventDefault(); // Megakadályozza az azonnali váltást
+          document.body.classList.add("slide-out"); // Slide-out animáció
+          setTimeout(() => {
+            location.href = href; // Oldalváltás
+          }, 500); // Az animáció időtartama után vált
+        }
+      });
+    });
   </script>
 </head>
 <body>
   <header class="main-header">
     <h1>WL Tracker</h1>
+    <h2>Főoldal</h2>
   </header>
 
   <div class="right-menu">
-    <button class="menu-button">Profilom</button>
-    <button class="menu-button">Beállítások</button>
-    <button class="menu-button">Súgó</button>
+    <button class="menu-button" onclick="location.href='profil.html'">Profilom</button>
+    <button class="menu-button" onclick="location.href='beallitasok.html'">Beállítások</button>
+    <button class="menu-button" onclick="location.href='sugo.html'">Súgó</button>
   </div>
 
   <div class="start-page">

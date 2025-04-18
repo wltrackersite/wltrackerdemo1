@@ -22,7 +22,7 @@ html{
   
   .container {
     background-color: #0B192F;
-    padding: 30px;
+    padding: 20px;
     border-radius: 12px;
     width: 100%;
     max-width: 400px;
@@ -33,6 +33,7 @@ html{
     margin: -10px auto; /* Csökkentett függőleges térköz */
     position: relative; /* Pozíció finomhangolása */
     top: -90px; /* A container feljebb tolása */
+    overflow: visible; /* Engedélyezi, hogy a legördülő menü kilógjon a containerből */
   }
   
   h1, h2, h3, h4 {
@@ -157,6 +158,12 @@ html{
     cursor: not-allowed;
   }
   
+  .match-button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+  }
+  
   .main-wrapper {
     display: flex;
     flex-direction: row;
@@ -221,4 +228,181 @@ html{
   /* Görgetősáv sarok (ha van) */
   ::-webkit-scrollbar-corner {
     background-color: #142035; /* Sarok színe */
+  }
+
+  .result-buttons {
+    display: flex; /* A gombok vízszintesen egymás mellé kerülnek */
+    justify-content: center; /* Középre igazítás */
+    gap: 20px; /* Térköz a gombok között */
+    margin-bottom: 20px; /* Térköz a gombok és az alatta lévő tartalom között */
+  }
+  
+  .result-buttons label {
+    display: flex;
+    align-items: center; /* A szöveg és a gomb egy vonalba kerül */
+  }
+  
+  .result-buttons .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #11336C;
+    color: #F1D086;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .result-buttons .button:hover {
+    background-color: #F1D086;
+    color: #11336C;
+  }
+
+  /* Aktív állapot (kiválasztott gomb) */
+  .result-buttons input[type="radio"]:checked + .button {
+    background-color: #F1D086; /* Hover szín */
+    color: #11336C; /* Hover szövegszín */
+    border: 2px solid #11336C; /* Opcionális: kiemelés */
+  }
+
+  .back-button {
+    display: block;
+    margin: 20px auto 0; /* Középre igazítás és térköz a tetején */
+    padding: 10px 20px;
+    background-color: #11336C;
+    color: #F1D086;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #F1D086;
+    color: #11336C;
+  }
+
+  .increment-decrement-buttons {
+    display: flex; /* A gombok és a pontszám egymás mellé kerülnek */
+    align-items: center; /* Függőlegesen középre igazítás */
+    justify-content: center; /* Vízszintesen középre igazítás */
+    gap: 10px; /* Térköz a gombok és a pontszám között */
+    margin: 0 auto; /* Középre igazítás a szülőelemhez képest */
+  }
+  
+  .increment-decrement-buttons button {
+    padding: 5px 10px; /* Csökkentett belső térköz */
+    background-color: #11336C;
+    color: #F1D086;
+    border: none;
+    border-radius: 4px; /* Kisebb lekerekítés */
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px; /* Kisebb betűméret */
+    width: 30px; /* Fix szélesség a gombokhoz */
+    height: 30px; /* Fix magasság a gombokhoz */
+    display: flex; /* A gomb tartalmának középre igazítása */
+    align-items: center; /* A gomb tartalmának függőleges középre igazítása */
+    justify-content: center; /* A gomb tartalmának vízszintes középre igazítása */
+    transition: background-color 0.3s ease;
+  }
+  
+  .increment-decrement-buttons button:hover {
+    background-color: #F1D086;
+    color: #11336C;
+  }
+  
+  .score-display {
+    font-size: 16px; /* Kisebb betűméret a pontszámhoz */
+    font-weight: bold;
+    color: #F1D086;
+    width: 40px; /* Fix szélesség a pontszámhoz */
+    text-align: center; /* Középre igazítás */
+  }
+
+  .autocomplete-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #0B192F;
+    border: 1px solid #11336C;
+    border-radius: 6px;
+    max-height: 120px; /* Csökkentett magasság */
+    overflow-y: auto; /* Görgetősáv, ha túl sok elem van */
+    position: absolute; /* A lista pozíciója a szülőhöz képest */
+    width: calc(100% - 16px); /* A keresőmező szélességéhez igazodik, figyelembe véve a paddingot */
+    z-index: 1000; /* A lista mindig a többi elem fölött jelenik meg */
+    left: 8px; /* Igazítás a keresőmező paddingjához */
+  }
+  
+  .autocomplete-list li {
+    padding: 8px; /* Csökkentett padding */
+    color: #F1D086;
+    cursor: pointer;
+    font-size: 14px; /* Kisebb betűméret */
+  }
+  
+  .autocomplete-list li:hover {
+    background-color: #11336C;
+    color: #F1D086;
+  }
+
+  .player-search {
+    position: relative; /* A legördülő menü pozíciójának kezeléséhez */
+  }
+
+  .player-search input {
+    width: 100%; /* A keresőmező teljes szélességű lesz a szülőelemhez képest */
+    font-size: 14px; /* Kisebb betűméret */
+    padding: 8px; /* Csökkentett padding */
+    box-sizing: border-box; /* A padding és a border beleszámít a szélességbe */
+    border: 1px solid #11336C; /* Kisebb kék vonal a mező körül */
+    border-radius: 4px; /* Lekerekített sarkok */
+    outline: none; /* Az alapértelmezett kék outline eltávolítása */
+  }
+  
+  .player-search input:focus {
+    border-color: #F1D086; /* A fókuszált mező kiemelése */
+    box-shadow: 0 0 5px #F1D086; /* Finom kiemelés fókusz esetén */
+  }
+
+  .player-search {
+    position: relative; /* A belső elemek pozíciójának kezeléséhez */
+  }
+
+  .player-search .clear-btn {
+    position: absolute;
+    top: 44%; /* Függőleges középre igazítás */
+    right: 10px; /* Távolság a keresőmező jobb szélétől */
+    transform: translateY(-60%); /* Finomhangolás: kicsit fentebb helyezi az "X"-et */
+    font-size: 12px; /* Kisebb méret az "X"-hez */
+    color: #F1D086;
+    cursor: pointer;
+    display: none; /* Alapértelmezés szerint rejtve van */
+  }
+
+  .player-search .clear-btn:hover {
+    color: #F1A65A; /* Hover állapot színe */
+  }
+
+  #addPlayerButton {
+    width: 100%; /* A gomb teljes szélességű lesz a szülőelemhez képest */
+    padding: 8px; /* Csökkentett padding */
+    font-size: 14px; /* Kisebb betűméret */
+    box-sizing: border-box; /* A padding és a border beleszámít a szélességbe */
+  }
+
+  .logo-icon {
+    cursor: pointer; /* Mutató jelzi, hogy kattintható */
+    width: 100px;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .logo-icon:hover {
+    transform: scale(1.1); /* Kicsit nagyobb lesz hover állapotban */
   }

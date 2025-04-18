@@ -157,6 +157,13 @@ input:disabled, select:disabled, button:disabled {
   cursor: not-allowed;
 }
 
+.match-button.disabled {
+  background-color: #ccc; /* Szürke háttér a letiltott gombhoz */
+  color: #666; /* Halvány szöveg a letiltott gombhoz */
+  cursor: not-allowed; /* Mutató jelzi, hogy nem kattintható */
+  opacity: 0.6; /* Átlátszóság a vizuális különbséghez */
+}
+
 .main-wrapper {
   display: flex;
   flex-direction: row;
@@ -198,6 +205,17 @@ input:disabled, select:disabled, button:disabled {
   color: #F1D086; /* Szöveg színe */
   position: relative; /* Pozíció finomhangolása */
   top: -10px; /* A szöveg kicsit fentebb kerül */
+}
+
+.logo-icon {
+  cursor: pointer; /* Mutató jelzi, hogy kattintható */
+  width: 100px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo-icon:hover {
+  transform: scale(1.1); /* Kicsit nagyobb lesz hover állapotban */
 }
 
 /* Görgetősáv szélessége és színe */

@@ -18,6 +18,18 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 40px 20px;
+  opacity: 1;
+  transition: opacity 0.5s ease; /* Az animáció időtartama és típusa */
+  transform: translateX(0); /* Alaphelyzetben nincs eltolás */
+  transition: transform 0.5s ease; /* Az animáció időtartama és típusa */
+}
+
+body.fade-out {
+  opacity: 0; /* Az oldal áttetszővé válik */
+}
+
+body.slide-out {
+  transform: translateX(-100%); /* Az oldal balra csúszik ki */
 }
 
 .flex-container {
@@ -30,11 +42,19 @@ body {
   max-width: 1300px;
 }
 
-h1, h2, h3, h4 {
+h1, h3, h4 {
   text-align: center;
   margin-bottom: 30px;
   color: #F1D086;
 }
+
+h2 {
+  margin-top: 10px; /* Csökkentett margó a h1 alatt */
+  margin-right: 0; /* Jobbra igazítás eltávolítása */
+  text-align: center;
+  margin-bottom: 30px;
+  color: #F1D086;
+} 
 
 input, select, button {
   width: 100%;
@@ -203,12 +223,13 @@ input:disabled, select:disabled, button:disabled {
 
 .main-header {
   display: flex;
-  align-items: flex-start; /* A logóval egy vonalba helyezi a címsort */
-  justify-content: center; /* Középre igazítja a címsort */
+  flex-direction: column; /* Az elemek egymás alá kerülnek */
+  align-items: center; /* Középre igazítás vízszintesen */
+  justify-content: center; /* Középre igazítás függőlegesen */
   color: white;
-  padding: 2px 10px; /* Csökkentett padding a fentebbi elhelyezéshez */
+  padding: 20px 10px; /* További padding a szebb elrendezéshez */
   text-align: center;
-  margin-bottom: 200px;
+  margin-bottom: 50px; /* Csökkentett margó az alatta lévő tartalomhoz */
 }
 
 .main-header h1 {
