@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>WL Tracker - Kezdőoldal</title>
+  <link rel="stylesheet" href="nyitolapcss.css">
+  <link rel="icon" type="image/x-icon" href="favico.png">
+  <script>
+    // Az oldal tetejére görgetés betöltéskor
+    window.onload = function() {
+      window.scrollTo(0, 0);
+    };
+  </script>
+</head>
+<body>
+  <header class="main-header">
+    <h1>WL Tracker</h1>
+  </header>
+
+  <div class="right-menu">
+    <button class="menu-button">Profilom</button>
+    <button class="menu-button">Beállítások</button>
+    <button class="menu-button">Súgó</button>
+  </div>
+
+  <div class="start-page">
+    <img src="icon.png" class="logo-icon" alt="WL Tracker Icon">
+    <button class="start-button" onclick="location.href='wl_meccsek.html'">Kezdés</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>WL Tracker</title>
+  <link rel="stylesheet" href="wl_stat.css">
+  <script src="wl_trackerjava.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="icon" type="image/x-icon" href="favico.png">
+</head>
+<body>
+  <header class="main-header">
+    <img src="icon.png" class="logo-icon" />
+    <h1>WL Tracker</h1>
+  </header>
+  
+<!--Jobb oldali menü-->
+<div class="right-menu">
+    <button class="menu-button">Profilom</button>
+    <button class="menu-button">Beállítások</button>
+    <button class="menu-button">Súgó</button>
+</div>
+
+<div class="container" id="matchFormContainer">
+    <h2>🎮 WL Stat</h2>
+    <form id="matchForm">
+      <div class="result-buttons">
+        <label>
+          <input type="radio" name="result" value="win">
+          <span class="button">Győzelem</span>
+        </label>
+        <label>
+          <input type="radio" name="result" value="loss">
+          <span class="button">Vereség</span>
+        </label>
+      </div>
+      
+      <div class="team-score">
+        <h2>Hazai</h2>
+        <div class="increment-decrement-buttons">
+          <button type="button" class="decrement">-</button>
+          <span class="score-display">0</span>
+          <button type="button" class="increment">+</button>
+        </div>
+      </div>
+
+      <div class="team-score">
+        <h2>Vendég</h2>
+        <div class="increment-decrement-buttons">
+          <button type="button" class="decrement">-</button>
+          <span class="score-display">0</span>
+          <button type="button" class="increment">+</button>
+        </div>
+      </div>
+      
+      <div id="playersSection">
+        <h2>⚽ Gólszerzők</h2>
+        <div class="player-row">
+          <div class="player-select-container">
+            <input type="text" class="player-select" placeholder="Játékos neve">
+            <span class="clear-btn" style="display: none;">❌</span>
+            <div class="autocomplete-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" onclick="addPlayer()">+ Játékos hozzáadása</button>
+      <button type="submit">Meccs mentése</button>
+    </form>
+  </div>
